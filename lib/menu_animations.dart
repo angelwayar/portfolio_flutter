@@ -7,13 +7,17 @@ class MenuAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AlbumMatrix4())),
-              child: Text("Move Album with Matrix4"))
-        ]),
+      body: SafeArea(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextButton(
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AlbumMatrix4())),
+                  child: Text("Move Album with Matrix4")),
+              Divider()
+            ]),
       ),
     );
   }

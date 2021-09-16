@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CoverPage extends StatefulWidget {
-  CoverPage({Key? key}) : super(key: key);
+  const CoverPage({Key? key}) : super(key: key);
 
   @override
   State<CoverPage> createState() => _CoverPageState();
@@ -14,8 +14,8 @@ class _CoverPageState extends State<CoverPage>
 
   @override
   void initState() {
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 250));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 250));
     _animation = Tween(begin: 0.0, end: 2.0).animate(
         CurvedAnimation(parent: _animationController, curve: Curves.easeIn));
     super.initState();
@@ -51,20 +51,21 @@ class _CoverPageState extends State<CoverPage>
               child: Center(
                 child: Text(
                   "Portada",
-                  style: TextStyle(fontSize: 24.0),
+                  style: const TextStyle(fontSize: 24.0),
                 ),
               ),
               decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(_radius),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      offset: Offset(0, 2),
-                      blurRadius: 8,
-                    )
-                  ]),
-              duration: Duration(milliseconds: 250),
+                color: Colors.amber,
+                borderRadius: BorderRadius.circular(_radius),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(0, 2),
+                    blurRadius: 8,
+                  )
+                ],
+              ),
+              duration: const Duration(milliseconds: 250),
             ),
           ),
         );

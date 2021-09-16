@@ -32,6 +32,11 @@ class _AlbumMatrix4State extends State<AlbumMatrix4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(Icons.arrow_back)),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -39,12 +44,13 @@ class _AlbumMatrix4State extends State<AlbumMatrix4> {
               height: 300.0,
               color: Colors.black,
               child: PageView.builder(
-                  itemCount: album.length,
-                  controller: _pageController,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return AlbumCard(index: index, currentPage: currentPage);
-                  }),
+                itemCount: album.length,
+                controller: _pageController,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return AlbumCard(index: index, currentPage: currentPage);
+                },
+              ),
             ),
           ],
         ),
@@ -67,20 +73,18 @@ class AlbumCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double relativePosition = index - currentPage;
 
-    return Container(
-      width: 150.0,
-      child: Transform(
-        transform: Matrix4.identity()
-          ..setEntry(3, 2, 0.003)
-          ..scale((1 - relativePosition.abs()).clamp(0.2, 0.6) + 0.4)
-          ..rotateY(relativePosition),
-        child: Container(
-          margin: EdgeInsets.only(top: 20, bottom: 20, left: 5, right: 5),
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50.0),
-              image: DecorationImage(
-                  image: AssetImage(album[index]), fit: BoxFit.cover)),
+    return Transform(
+      transform: Matrix4.identity()
+        ..setEntry(3, 2, 0.003)
+        ..scale((1 - relativePosition.abs()).clamp(0.2, 0.6) + 0.4)
+        ..rotateY(relativePosition),
+      child: Container(
+        margin: EdgeInsets.only(top: 20, bottom: 20, left: 5, right: 5),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50.0),
+          image: DecorationImage(
+              image: AssetImage(album[index]), fit: BoxFit.cover),
         ),
       ),
     );

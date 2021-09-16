@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/Pages/cover_page/cover_page.dart';
+
 import 'package:portfolio/menu_animations.dart';
+import 'package:portfolio/Pages/cover_page/cover_page.dart';
 
 void main() {
   runApp(MyApp());
